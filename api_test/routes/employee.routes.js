@@ -1,10 +1,11 @@
 module.exports = app => {
   const employees = require("../controllers/employee.controller.js");
 
-  // Retrieve a single employee with employeeId
-  app.get("/employees/:employeeId", employees.findOne);
+  var router = require("express").Router();
 
-   // Create a new Customer
-  app.post("/employees", employees.create);
+  // Retrieve a single employee with employeeId
+  router.get("/:id", employees.findOne);
+
+  app.use('/employees', router);
 
 };
